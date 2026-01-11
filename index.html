@@ -20,9 +20,10 @@
             align-items: center;
             overflow: hidden;
             position: relative;
+            transition: background 0.3s ease;
         }
 
-        /* 背景光晕 */
+        /* 亮色模式光晕 */
         body::before {
             content: '';
             position: absolute;
@@ -66,6 +67,7 @@
             max-width: 540px;
             text-align: center;
             z-index: 10;
+            transition: all 0.3s ease;
         }
 
         h1 {
@@ -77,6 +79,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            transition: all 0.3s ease;
         }
 
         p {
@@ -85,6 +88,7 @@
             font-weight: 400;
             line-height: 1.5;
             margin-bottom: 40px;
+            transition: color 0.3s ease;
         }
 
         a {
@@ -100,7 +104,6 @@
             border-bottom-color: #666;
         }
 
-        /* 进度指示器 */
         .progress-container {
             width: 200px;
             height: 3px;
@@ -108,6 +111,7 @@
             border-radius: 2px;
             overflow: hidden;
             margin: 0 auto;
+            transition: background 0.3s ease;
         }
 
         .progress-bar {
@@ -115,11 +119,64 @@
             background: linear-gradient(90deg, #2a2a2a 0%, #1a1a1a 100%);
             border-radius: 2px;
             animation: loading 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            transition: background 0.3s ease;
         }
 
         @keyframes loading {
             from { width: 0%; }
             to { width: 100%; }
+        }
+
+        /* 暗色模式 */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            }
+
+            body::before {
+                background: radial-gradient(circle, rgba(40, 40, 40, 0.4) 0%, transparent 70%);
+            }
+
+            body::after {
+                background: radial-gradient(circle, rgba(30, 30, 30, 0.6) 0%, transparent 70%);
+            }
+
+            .glass-card {
+                background: rgba(20, 20, 20, 0.6);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 
+                    0 20px 60px rgba(0, 0, 0, 0.5),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            }
+
+            h1 {
+                background: linear-gradient(135deg, #ffffff 0%, #a8a8a8 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            p {
+                color: #999;
+            }
+
+            a {
+                color: #e0e0e0;
+                border-bottom-color: #404040;
+            }
+
+            a:hover {
+                color: #fff;
+                border-bottom-color: #666;
+            }
+
+            .progress-container {
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            .progress-bar {
+                background: linear-gradient(90deg, #e0e0e0 0%, #ffffff 100%);
+            }
         }
 
         /* 响应式 */
