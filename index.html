@@ -35,62 +35,13 @@
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", async () => {
-            const currentUrl = window.location.href;
-
-            // 定义跳转规则和默认跳转页面
-            const redirectRules = [
-                { pattern: "/about", target: "https://www.noctiro.moe/about/" },
-                { pattern: "/link", target: "https://www.noctiro.moe/about/" },
-                { pattern: "/archives", target: "https://www.noctiro.moe/archive/" },
-                { pattern: "/tags", target: "https://www.noctiro.moe/archive/" },
-                { pattern: "/post/110db35fe8a5", target: "https://www.noctiro.moe/posts/hexo-butterfly-random/" },
-                { pattern: "/post/b1a99e3babd3", target: "https://www.noctiro.moe/posts/reverse-proxy/" },
-                { pattern: "/post/73eecb1e5959", target: "https://www.noctiro.moe/posts/id-gen-bukkit/" },
-                { pattern: "/post/641f6e0bfed0", target: "https://www.noctiro.moe/posts/bukkit-custom-entity/" },
-            ];
-            const defaultRedirect = "https://www.noctiro.moe";
-
-            // 规范化 URL（去除末尾的 `/` 和 `.html` 后缀）
-            const normalizeUrl = (url) => {
-                let normalized = url;
-                if (normalized.endsWith("/")) {
-                    normalized = normalized.slice(0, -1); // 去除末尾斜杠
-                }
-                if (normalized.endsWith(".html")) {
-                    normalized = normalized.slice(0, -5); // 去除 .html 后缀
-                }
-                return normalized;
-            };
-
-            const normalizedUrl = normalizeUrl(currentUrl);
-
-            // 匹配规则
-            const rule = redirectRules.find(r => {
-                const regex = new RegExp(r.pattern + "(/|$)"); // 匹配 "/pattern" 或 "/pattern/"
-                return regex.test(normalizedUrl);
-            });
-
-            // 如果匹配规则，则检查目标页面是否有效
-            if (rule) {
-                try {
-                    const response = await fetch(rule.target, { method: "HEAD" });
-                    if (response.ok) {
-                        window.location.href = rule.target; // 跳转到匹配页面
-                        return;
-                    }
-                } catch (error) {
-                    console.error("Error fetching target URL:", error);
-                }
-            }
-
-            // 如果没有匹配规则或目标无效，跳转到默认页面
-            window.location.href = defaultRedirect;
+            window.location.href = "https://www.noctiro.moe";
         });
     </script>
 </head>
 <body>
   <div class="container">
-      <h1>跳转新博客中</h1>
+      <h1>跳转网站中</h1>
       <p>请等待，即将自动跳转至 <a href="https://www.noctiro.moe">noctiro.moe</a></p>
   </div>
 </body>
